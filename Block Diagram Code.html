@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CardioSpectra — Block Diagram</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #f7f8fa;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 64px;
+    min-height: 100vh;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: #111;
+    margin-bottom: 6px;
+  }
+  .sub { font-size: .85rem; color: #999; margin-bottom: 48px; }
+
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  /* ROW */
+  .row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* BOX */
+  .box {
+    border-radius: 10px;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: .82rem;
+    font-weight: 600;
+    color: #111;
+    min-width: 130px;
+    border: 1.5px solid;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .box small {
+    display: block;
+    font-weight: 400;
+    font-size: .72rem;
+    color: #888;
+    margin-top: 3px;
+  }
+
+  .box-user    { border-color: #d0d0d0; background: #fff; }
+  .box-input   { border-color: #00c49a; background: #f0fff9; color: #007a60; }
+  .box-proc    { border-color: #3b82f6; background: #eff6ff; color: #1d4ed8; }
+  .box-output  { border-color: #f59e0b; background: #fffbeb; color: #92400e; }
+
+  /* ARROW */
+  .arrow-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+  }
+  .arrow-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 130px;
+  }
+  .arrow-down {
+    width: 1.5px;
+    height: 28px;
+    background: #ccc;
+    position: relative;
+  }
+  .arrow-down::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #ccc;
+  }
+  .arrow-down.green  { background: #00c49a; } .arrow-down.green::after  { border-top-color: #00c49a; }
+  .arrow-down.blue   { background: #3b82f6; } .arrow-down.blue::after   { border-top-color: #3b82f6; }
+  .arrow-down.amber  { background: #f59e0b; } .arrow-down.amber::after  { border-top-color: #f59e0b; }
+
+  /* HORIZONTAL CONNECTOR */
+  .h-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    height: 28px;
+    margin: 0;
+  }
+  .h-line {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1.5px;
+    background: #ccc;
+  }
+
+  /* SPACER */
+  .gap { height: 0; }
+
+  .label-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+  .layer-label {
+    min-width: 130px;
+    text-align: center;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #bbb;
+  }
+</style>
+</head>
+<body>
+
+<h1>CardioSpectra</h1>
+<div class="sub">System Block Diagram</div>
+
+<div class="diagram">
+
+  <!-- USER -->
+  <div class="row">
+    <div class="box box-user">👤 User</div>
+  </div>
+
+  <!-- arrow fork -->
+  <div style="display:flex;flex-direction:column;align-items:center;width:100%;">
+    <!-- single down -->
+    <div class="arrow-down green" style="height:20px;"></div>
+    <!-- horizontal spread -->
+    <div style="display:flex;width:300px;justify-content:space-between;align-items:flex-start;">
+      <div style="width:1.5px;height:20px;background:#00c49a;position:relative;">
+        <div style="position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #00c49a;"></div>
+      </div>
+      <div style="height:1.5px;background:#00c49a;flex:1;margin-top:0px;align-self:flex-start;margin-top:0;"></div>
+      <div style="width:1.5px;height:20px;background:#00c49a;position:relative;">
+        <div style="position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #00c49a;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INPUTS -->
+  <div class="label-row">
+    <div class="layer-label" style="min-width:130px"></div>
+    <div class="layer-label" style="min-width:130px;color:#00c49a;">Input</div>
+    <div class="layer-label" style="min-width:130px"></div>
+  </div>
+  <div class="row">
+    <div class="box box-input">📁 WAV Upload<small>Drag & drop / browse</small></div>
+    <div class="box box-input">🎙️ Live Mic<small>getUserMedia()</small></div>
+  </div>
+
+  <!-- arrows down to processing -->
+  <div style="display:flex;gap:16px;justify-content:center;margin-top:0;">
+    <div style="min-width:130px;display:flex;justify-content:center;"><div class="arrow-down blue"></div></div>
+    <div style="min-width:130px;display:flex;justify-content:center;"><div class="arrow-down blue"></div></div>
+  </div>
+
+  <!-- PROCESSING -->
+  <div class="label-row"><div class="layer-label" style="color:#3b82f6;min-width:290px;text-align:center;">Processing</div></div>
+  <div class="row">
+    <div class="box box-proc" style="min-width:290px;">
+      ⚙️ Web Audio API
+      <small>AudioContext · decodeAudioData · AnalyserNode</small>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:center;"><div class="arrow-down blue"></div></div>
+
+  <div class="row" style="gap:12px;">
+    <div class="box box-proc" style="min-width:120px;font-size:.78rem;">📊 Waveform<small>Canvas rendering</small></div>
+    <div class="box box-proc" style="min-width:120px;font-size:.78rem;">💓 BPM Detect<small>Peak detection</small></div>
+    <div class="box box-proc" style="min-width:120px;font-size:.78rem;">〰️ Rhythm<small>Interval analysis</small></div>
+  </div>
+
+  <!-- arrows to output -->
+  <div style="display:flex;gap:12px;justify-content:center;">
+    <div style="min-width:120px;display:flex;justify-content:center;"><div class="arrow-down amber"></div></div>
+    <div style="min-width:120px;display:flex;justify-content:center;"><div class="arrow-down amber"></div></div>
+    <div style="min-width:120px;display:flex;justify-content:center;"><div class="arrow-down amber"></div></div>
+  </div>
+
+  <!-- OUTPUTS -->
+  <div class="label-row"><div class="layer-label" style="color:#f59e0b;min-width:370px;text-align:center;">Output</div></div>
+  <div class="row" style="gap:12px;">
+    <div class="box box-output" style="min-width:120px;font-size:.78rem;">📈 Waveform Graph<small>Glowing canvas</small></div>
+    <div class="box box-output" style="min-width:120px;font-size:.78rem;">🔢 BPM Readout<small>+ Classification</small></div>
+    <div class="box box-output" style="min-width:120px;font-size:.78rem;">▶ Playback Bar<small>Play/Pause/Stop</small></div>
+  </div>
+
+  <!-- save path -->
+  <div style="display:flex;justify-content:flex-end;width:100%;padding-right:16px;margin-top:4px;">
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:120px;">
+      <div class="arrow-down" style="background:#9333ea;height:20px;"></div>
+      <div class="arrow-down" style="border-top:6px solid #9333ea;"></div>
+    </div>
+  </div>
+
+  <!-- EXPORT -->
+  <div class="row" style="justify-content:flex-end;padding-right:16px;">
+    <div class="box" style="border-color:#9333ea;background:#faf5ff;color:#6b21a8;min-width:120px;font-size:.78rem;">
+      💾 Save File
+      <small>Download .webm</small>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div style="width:100%;height:1.5px;background:#e5e7eb;margin:40px 0 28px;"></div>
+
+  <!-- TECH STACK HEADING -->
+  <div style="width:100%;text-align:center;margin-bottom:20px;">
+    <div style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#bbb;margin-bottom:4px;">Tech Stack</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:#111;">Languages &amp; Technologies Used</div>
+  </div>
+
+  <!-- FRONTEND + BACKEND CARDS -->
+  <div style="display:flex;gap:16px;width:100%;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
+
+    <!-- FRONTEND -->
+    <div style="flex:1;min-width:220px;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#f0f9ff;border-bottom:1.5px solid #bae6fd;padding:10px 16px;display:flex;align-items:center;gap:8px;">
+        <span>🖥️</span>
+        <span style="font-size:.8rem;font-weight:700;color:#0369a1;letter-spacing:.04em;text-transform:uppercase;">Frontend</span>
+      </div>
+      <div style="padding:16px;display:flex;flex-direction:column;gap:9px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #ffcc80;background:#fff3e0;color:#e65100;white-space:nowrap;">HTML5</span>
+          <span style="font-size:.75rem;color:#999;">Structure &amp; layout</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #90caf9;background:#e3f2fd;color:#1565c0;white-space:nowrap;">CSS3</span>
+          <span style="font-size:.75rem;color:#999;">Styling &amp; animations</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #fff176;background:#fffde7;color:#f57f17;white-space:nowrap;">JavaScript</span>
+          <span style="font-size:.75rem;color:#999;">Logic &amp; interactivity</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #ce93d8;background:#f3e5f5;color:#6a1b9a;white-space:nowrap;">Web Audio API</span>
+          <span style="font-size:.75rem;color:#999;">Audio processing</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #a5d6a7;background:#e8f5e9;color:#2e7d32;white-space:nowrap;">Canvas API</span>
+          <span style="font-size:.75rem;color:#999;">Waveform drawing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACKEND -->
+    <div style="flex:1;min-width:220px;background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+      <div style="background:#fafaf8;border-bottom:1.5px solid #e5e7eb;padding:10px 16px;display:flex;align-items:center;gap:8px;">
+        <span>🔧</span>
+        <span style="font-size:.8rem;font-weight:700;color:#555;letter-spacing:.04em;text-transform:uppercase;">Backend</span>
+      </div>
+      <div style="padding:16px;display:flex;flex-direction:column;gap:9px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #ddd;background:#f5f5f5;color:#555;white-space:nowrap;">None</span>
+          <span style="font-size:.75rem;color:#999;">No server required</span>
+        </div>
+        <div style="padding:11px;background:#f9fafb;border-radius:8px;border:1px dashed #e5e7eb;">
+          <p style="font-size:.75rem;color:#888;line-height:1.6;">
+            CardioSpectra is <strong style="color:#444;">fully client-side</strong>. All audio processing, BPM detection, and waveform rendering happens directly in the browser — no server, no database needed.
+          </p>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #a5d6a7;background:#e8f5e9;color:#2e7d32;white-space:nowrap;">Browser</span>
+          <span style="font-size:.75rem;color:#999;">Chrome / Firefox / Safari</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:100px;border:1px solid #f48fb1;background:#fce4ec;color:#880e4f;white-space:nowrap;">GitHub Pages</span>
+          <span style="font-size:.75rem;color:#999;">Free static hosting</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
