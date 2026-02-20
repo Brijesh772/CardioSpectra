@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardioSpectra — Analysis Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="analysis.css">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">CardioSpectra</a>
+  <button onclick="exportReport()">Export</button>
+</nav>
+
+<div class="page">
+  <h1>Analysis Results</h1>
+
+  <div class="status-bar">
+    <div class="status-card">
+      <div>Heart Rate</div>
+      <div id="sbBpm">--</div>
+    </div>
+    <div class="status-card">
+      <div>Rhythm</div>
+      <div id="sbRhythm">--</div>
+    </div>
+  </div>
+
+  <div class="wave-card">
+    <canvas id="waveCanvas" height="220"></canvas>
+  </div>
+</div>
+
+<script src="analysis.js"></script>
+</body>
+</html>
