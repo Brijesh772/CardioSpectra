@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CardioSpectra — Where Sound Becomes Insight</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2">
+        <polyline points="3,12 6,12 8,5 11,19 13,9 16,14 18,12 21,12"/>
+      </svg>
+    </div>
+    <span class="nav-name">CardioSpectra</span>
+  </div>
+
+  <div class="nav-right">
+    <a href="#features" class="nav-link">Features</a>
+    <a href="#sounds" class="nav-link">Heart Sounds</a>
+    <a href="analyzer.html" class="btn-hero small-btn">Open Analyzer</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="eyebrow"><div class="eyebrow-line"></div>Cardiac Sound Visualization</div>
+      <h1>Where Sound<br>Becomes <span class="italic">Insight.</span></h1>
+      <div class="hero-slogan">"Every heartbeat tells a story — we help you read it."</div>
+      <p class="hero-desc">
+        CardioSpectra converts cardiac acoustic signals into real-time waveform graphs with BPM detection.
+      </p>
+      <div class="hero-cta">
+        <a href="analyzer.html" class="btn-hero">Open Analyzer</a>
+        <a href="#sounds" class="btn-sec">Heart Sound Guide</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hcard-top">
+        <span class="hcard-title">ECG — Channel I — Live Preview</span>
+        <div class="live-badge"><div class="live-dot"></div>Live</div>
+      </div>
+
+      <canvas id="heroCanvas" height="160"></canvas>
+
+      <div class="hcard-bottom">
+        <div class="vital-col">
+          <div class="v-num red" id="bpmDisp">72</div>
+          <div class="v-key">BPM</div>
+        </div>
+        <div class="vital-col">
+          <div class="v-num" id="prDisp">168</div>
+          <div class="v-key">PR ms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
