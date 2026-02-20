@@ -1,0 +1,14 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial, sans-serif;background:#f9f8f5;color:#1c1917}
+nav{padding:12px 6%;border-bottom:1px solid #e8e4dc;background:#fff}
+.page{max-width:700px;margin:auto;padding:24px}
+h1{margin-bottom:16px}
+.upload-card{background:#fff;border:1px solid #e8e4dc;border-radius:12px;padding:16px}
+.drop-zone{position:relative;border:2px dashed #cfcfcf;border-radius:10px;padding:40px;text-align:center;background:#fafaf8}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.mic-option{margin-top:12px;padding:10px 14px;border:none;border-radius:8px;background:#4a5c2f;color:#fff;cursor:pointer}
+.mic-live-section{display:none;margin-top:16px;background:#fff;border:1px solid #e8e4dc;border-radius:12px;padding:12px}
+.mic-live-section.active{display:block}
+#micBtn{width:72px;height:72px;border-radius:50%;border:none;background:#c0392b;color:#fff;font-size:1.8rem;cursor:pointer}
+#micStat{margin-top:8px;margin-bottom:8px}
+canvas{width:100%;border:1px solid #e8e4dc;background:#fff;margin-top:10px}

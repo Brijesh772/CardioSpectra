@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CardioSpectra — Upload Audio</title>
+<link rel="stylesheet" href="analyzer.css">
+</head>
+<body>
+<nav><a href="index.html">← Back to Home</a></nav>
+
+<div class="page">
+  <h1>Upload Your Audio</h1>
+
+  <div class="upload-card">
+    <div class="drop-zone">
+      <input type="file" id="fileInput" accept=".wav,.mp3,.ogg,audio/*" onchange="handleFile(this.files[0])">
+      <p>Drop cardiac audio here or click to upload</p>
+    </div>
+
+    <button class="mic-option" onclick="showMic()">🎙️ Record Live</button>
+  </div>
+
+  <div class="mic-live-section" id="micSection">
+    <button id="micBtn" onclick="toggleMic()">🎙️</button>
+    <div id="micStat">Tap to start recording</div>
+    <canvas id="micCanvas" height="150"></canvas>
+    <div id="liveBpm">BPM: —</div>
+  </div>
+</div>
+
+<script src="analyzer.js"></script>
+</body>
+</html>
